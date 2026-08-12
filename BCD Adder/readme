@@ -1,0 +1,79 @@
+# BCD Adder using Verilog
+
+## 📌 Project Overview
+
+This project implements a **BCD (Binary Coded Decimal) Adder** using Verilog HDL.
+
+A BCD adder adds two 4-bit BCD digits and produces a valid BCD result. If the binary addition produces a value greater than 9, or generates a carry, a correction value of **6 (0110)** is added.
+
+## 🎯 Objectives
+
+* Understand BCD number representation.
+* Design a BCD addition circuit using Verilog.
+* Implement BCD correction logic.
+* Verify the design using a Verilog testbench.
+
+## ⚙️ Working Principle
+
+First, the two 4-bit BCD digits are added.
+
+If the result is greater than 9 or there is a carry, `0110` is added to correct the result into valid BCD format.
+
+### Correction Condition
+
+```text
+If sum > 9 OR carry = 1
+        ↓
+Add 0110
+        ↓
+Valid BCD Result
+```
+
+## 🔌 Inputs and Outputs
+
+| Signal  | Width | Description          |
+| ------- | ----: | -------------------- |
+| `a`     | 4-bit | First BCD digit      |
+| `b`     | 4-bit | Second BCD digit     |
+| `sum`   | 4-bit | BCD sum digit        |
+| `carry` | 1-bit | Decimal carry output |
+
+## 🧮 Examples
+
+| A | B | Decimal Addition | Carry | Sum |
+| - | - | ---------------: | ----: | --- |
+| 3 | 4 |                7 |     0 | 7   |
+| 5 | 4 |                9 |     0 | 9   |
+| 7 | 5 |               12 |     1 | 2   |
+| 8 | 7 |               15 |     1 | 5   |
+| 9 | 9 |               18 |     1 | 8   |
+
+## 🛠️ Tools Used
+
+* Verilog HDL
+* Icarus Verilog / ModelSim / Vivado
+* GTKWave (optional)
+
+## 🚀 How to Run
+
+Compile the design and testbench:
+
+```bash
+iverilog -o bcd_adder_sim bcd_adder.v bcd_adder_tb.v
+```
+
+Run the simulation:
+
+```bash
+vvp bcd_adder_sim
+```
+
+The output will display the input BCD digits, sum, and carry.
+
+## 📚 Applications
+
+* Digital calculators
+* Digital clocks
+* Counters
+* Arithmetic Logic Units
+* Digital systems using decimal arithmetic

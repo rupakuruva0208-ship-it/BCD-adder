@@ -1,0 +1,22 @@
+module bcd_adder (
+    input  [3:0] a,
+    input  [3:0] b,
+    output reg [3:0] sum,
+    output reg       carry
+);
+
+reg [4:0] temp;
+
+always @(*) begin
+    temp = a + b;
+
+    if (temp > 9) begin
+        temp = temp + 5'b00110;
+        carry = 1'b1;
+    end
+    else begin
+        carry = 1'b0;
+    end
+
+    sum = temp[3:0];
+    
